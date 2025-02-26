@@ -1,0 +1,35 @@
+﻿@* Index.cshtml *@
+@model IEnumerable<NoteModel>
+
+@{
+ViewData["Title"] = "Notes";
+}
+
+<h1>Notes</h1>
+<a asp-action="NoteEditor" class="btn btn-primary">New Note</a>
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th>Subject</th>
+        <th>Created</th>
+        <th>Last Modified</th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var note in Model)
+    {
+    <tr>
+        <td>@note.Subject</td>
+        <td>@note.CreateDate.ToShortDateString()</td>
+        <td>@note.LastModified.ToShortDateString()</td>
+        <td>
+            <a asp-action="NoteDetail" asp-route-id="@note.Id" class="btn btn-info">View</a>
+            <a asp-action="NoteEditor" asp-route-id="@note.Id" class="btn btn-warning">Edit</a>
+            <a asp-action="DeleteNote" asp-route-id="@note.Id" class="btn btn-danger">Delete</a>
+        </td>
+    </tr>
+    }
+    </tbody>
+</table>
+

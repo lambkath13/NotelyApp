@@ -1,0 +1,14 @@
+﻿@* NoteDetail.cshtml *@
+@model NoteModel
+
+@{
+    ViewData["Title"] = "Note Details";
+}
+
+<h1>@Model.Subject</h1>
+<p>@Model.Detail</p>
+<p><strong>Created:</strong> @Model.CreateDate</p>
+<p><strong>Last Modified:</strong> @Model.LastModified</p>
+<a asp-action="Index" class="btn btn-secondary">Back</a>
+<a asp-action="NoteEditor" asp-route-id="@Model.Id" class="btn btn-warning">Edit</a>
+<a asp-action="DeleteNote" asp-route-id="@Model.Id" class="btn btn-danger">Delete</a>
